@@ -11,10 +11,6 @@ if (typeof require.ensure !== 'function') {
   };
 }
 
-
-
-// react-router setup with code-splitting
-// More info: http://blog.mxstbr.com/2016/01/react-apps-with-pages/
 export default (
   <Route path="/" component={App}>
    <IndexRoute component={Comments}></IndexRoute>

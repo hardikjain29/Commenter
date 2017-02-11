@@ -16,7 +16,6 @@ const Comments = React.createClass({
 	},
 
   render() {
-    console.log(this.props);
     var s = {float:'center'};
     var r = {float:'right'};
     var m = {margin:'15px'};

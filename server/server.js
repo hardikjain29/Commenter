@@ -31,8 +31,6 @@ import Helmet from 'react-helmet';
 // Import required modules
 import routes from '../client/routes';
 import { fetchComponentData } from './util/fetchData';
-import posts from './routes/post.routes';
-import dummyData from './dummyData';
 import serverConfig from './config';
 
 // Set native promises as mongoose promise
@@ -52,7 +50,6 @@ app.use(compression());
 app.use(bodyParser.json({ limit: '20mb' }));
 app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));
 app.use(Express.static(path.resolve(__dirname, '../dist')));
-app.use('/api', posts);
 
 // Render Initial HTML
 const renderFullPage = (html, initialState) => {
@@ -72,7 +69,10 @@ const renderFullPage = (html, initialState) => {
         ${head.link.toString()}
         ${head.script.toString()}
 
+        
         ${process.env.NODE_ENV === 'production' ? `<link rel='stylesheet' href='${assetsManifest['/app.css']}' />` : ''}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'/>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
@@ -133,6 +133,8 @@ app.post('/likes',function (req,res) {
     if(data){
       console.log("Updated likes");
       res.sendStatus(200);
+    }else{
+      res.sendStatus(500);
     }
   });
 
@@ -144,6 +146,8 @@ app.post('/dislikes',function (req,res) {
     if(data){
       console.log("Updated dis");
       res.sendStatus(200);
+    }else{
+      res.sendStatus(500);
     }
   });
 
@@ -187,7 +191,7 @@ app.use((req, res, next) => {
 // start app
 app.listen(serverConfig.port, (error) => {
   if (!error) {
-    console.log(`MERN is running on port: ${serverConfig.port}! Build something amazing!`); // eslint-disable-line
+    console.log(`Commenter is running on port: ${serverConfig.port}!`); // eslint-disable-line
   }
 });
 

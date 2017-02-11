@@ -78,8 +78,7 @@ export function fetchComments() {
 
 function dbLikes(id){
   return new Promise((resolve, reject) => {
-      console.log("entered db likes");
-            var url = "http://localhost:8000/likes";
+            var url = "/likes";
         resolve(
 
            $.ajax({
@@ -99,8 +98,7 @@ function dbLikes(id){
 
 function dbDislikes(id){
   return new Promise((resolve, reject) => {
-      console.log("entered db dislikes");
-            var url = "http://localhost:8000/dislikes";
+        var url = "/dislikes";
         resolve(
             $.ajax({
                 method: "POST",
@@ -118,8 +116,7 @@ function dbDislikes(id){
 
 function addComments(comment) {
     return new Promise((resolve, reject) => {
-      console.log("entered add");
-            var url = "http://localhost:8000/comments";
+            var url = "/comments";
         resolve(
             $.ajax({
                 method: "POST",
@@ -136,8 +133,7 @@ function addComments(comment) {
 
 function loadComments() {
     return new Promise((resolve, reject) => {
-      console.log("entered");
-            var url = "http://localhost:8000/comments";
+            var url = "/comments";
         resolve(
             $.ajax({
                     type: "GET",
