@@ -128,11 +128,9 @@ app.post('/comments',function (req,res) {
 app.post('/likes',function (req,res) {
   const id = req.body.id;
   Comment.findByIdAndUpdate(id, {$inc: {likes:1}}, function (err, data) {
-
     if(data){
       console.log("Updated");
     }
-
   });
 
 });

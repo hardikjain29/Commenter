@@ -5,25 +5,6 @@ export function addComment(comment) {
   }
 }
 
-export function requestLoad() {
-  return {
-    type: 'REQUEST_LOAD'
-  }
-}
-
-export function stopLoad() {
-  return {
-    type: 'STOP_LOAD'
-  }
-}
-
-export function receiveLoad(data) {
-  return {
-    type: 'RECEIVE_LOAD',
-    data
-  }
-}
-
 export function receiveComments(data) {
   console.log("Recieved"+ data);
   return {
@@ -66,8 +47,8 @@ export function uiLikes(id) {
 
 export function incrementLikes(id) {
   return (dispatch, getState) => {
-      dispatch(uiLikes(id));
         dbLikes(id);
+        dispatch(uiLikes(id));
     }
 }
 

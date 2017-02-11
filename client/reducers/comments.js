@@ -5,11 +5,8 @@ function comments(state = [], action) {
         comments: action.data
       })
     case 'INCREMENT_LIKES':
-      console.log(state.comments.comments);
-      console.log(action.id);
       var newState = state.comments.comments.map(u => {
         if(action.id === u._id){
-          console.log(u._id);
           return Object.assign({}, u, { likes: u.likes + 1} )
         }
         else
