@@ -26,7 +26,7 @@ const Comments = React.createClass({
           <div className="row">
             <div className="ingredients col m12">
               <form ref="inForm" className="in-form" onSubmit={this.handleSubmit}>
-                <input style={m}  type="text" ref="comment" placeholder="Enter a comment"/>
+                <textarea style={m}  className="materialize-textarea" type="text" ref="comment" placeholder="Enter a comment"></textarea>
               </form>
           </div>
                 <div className="col m12">

@@ -56,6 +56,7 @@ export function incrementLikes(id) {
   return (dispatch, getState) => {
         dbLikes(id);
         dispatch(uiLikes(id));
+
     }
 }
 
@@ -80,15 +81,17 @@ function dbLikes(id){
       console.log("entered db likes");
             var url = "http://localhost:8000/likes";
         resolve(
-            $.ajax({
-                method: "POST",
-                url: url,
-                data: {
-                  id:id}
-              }).done(function( msg ) {
-                  console.log( "Data Saved: " + msg );
-                  return;
-                })
+
+           $.ajax({
+                type: "POST", 
+                url : url,
+                data: {id:id}
+            }).done(function()  {
+                console.log("Success.");
+                return;
+            }).fail(function()  {
+                alert("Sorry. Server unavailable. ");
+            })
           );
     });
 
@@ -102,7 +105,7 @@ function dbDislikes(id){
             $.ajax({
                 method: "POST",
                 url: url,
-                data: {
+                data:{
                   id:id}
               }).done(function( msg ) {
                   console.log( "Data Saved: " + msg );
@@ -139,6 +142,8 @@ function loadComments() {
             $.ajax({
                     type: "GET",
                     cache: false,
+                    async: true,
+                     timeout:50000,
                     url: url,
                     success: function (data) {
                     	return data
