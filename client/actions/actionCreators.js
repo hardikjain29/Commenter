@@ -13,12 +13,6 @@ export function receiveComments(data) {
   }
 }
 
-export function deleteIngredient(index) {
-  return {
-    type: 'DELETE_INGREDIENT',
-    index
-  }
-}
 
 export function dbComment(comment) {
   return (dispatch, getState) => {
@@ -27,16 +21,6 @@ export function dbComment(comment) {
     }
 }
 
-export function startLoad(ingredients) {
-  return (dispatch, getState) => {
-  		dispatch(requestLoad());
-        loadApi(ingredients)
-            .then(data => {
-            	dispatch(stopLoad());
-            	return dispatch(receiveLoad(data))
-            });
-    }
-}
 
 export function uiLikes(id) {
   return {

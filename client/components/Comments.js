@@ -16,14 +16,11 @@ const Comments = React.createClass({
 	},
 
   render() {
-    var s = {float:'center'};
-    var r = {float:'right'};
     var m = {margin:'15px'};
-    var ms = {marginTop:'125px'};
     return (
       <div className="container">
           <div className="row">
-            <div className="ingredients col m12">
+            <div className="col m12">
               <form ref="inForm" className="in-form" onSubmit={this.handleSubmit}>
                 <textarea style={m}  className="materialize-textarea" type="text" ref="comment" placeholder="Enter a comment"></textarea>
               </form>
