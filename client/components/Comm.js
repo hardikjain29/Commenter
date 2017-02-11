@@ -6,6 +6,10 @@ const Comm = React.createClass({
     this.props.incrementLikes(id);
   },
 
+  handleDislikes(id){
+    this.props.decrementLikes(id);
+  },
+
 	render(){
 		return(
 			<div className="col s12">
@@ -16,7 +20,7 @@ const Comm = React.createClass({
           <button onClick={() => this.handleLikes(this.props.comment._id)} className="likes">{this.props.comment.likes}</button>
         </div>
         <div className="col s2">
-          <button className="dislikes">{this.props.comment.dislikes}</button>
+          <button onClick={() => this.handleDislikes(this.props.comment._id)} className="dislikes">{this.props.comment.dislikes}</button>
         </div>
       </div>
 			)

@@ -45,10 +45,24 @@ export function uiLikes(id) {
   }
 }
 
+export function uiDislikes(id) {
+  return {
+    type: 'DECREMENT_LIKES',
+    id
+  }
+}
+
 export function incrementLikes(id) {
   return (dispatch, getState) => {
         dbLikes(id);
         dispatch(uiLikes(id));
+    }
+}
+
+export function decrementLikes(id) {
+  return (dispatch, getState) => {
+        dbDislikes(id);
+        dispatch(uiDislikes(id));
     }
 }
 
@@ -65,6 +79,25 @@ function dbLikes(id){
   return new Promise((resolve, reject) => {
       console.log("entered db likes");
             var url = "http://localhost:8000/likes";
+        resolve(
+            $.ajax({
+                method: "POST",
+                url: url,
+                data: {
+                  id:id}
+              }).done(function( msg ) {
+                  console.log( "Data Saved: " + msg );
+                  return;
+                })
+          );
+    });
+
+}
+
+function dbDislikes(id){
+  return new Promise((resolve, reject) => {
+      console.log("entered db dislikes");
+            var url = "http://localhost:8000/dislikes";
         resolve(
             $.ajax({
                 method: "POST",

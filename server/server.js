@@ -129,7 +129,17 @@ app.post('/likes',function (req,res) {
   const id = req.body.id;
   Comment.findByIdAndUpdate(id, {$inc: {likes:1}}, function (err, data) {
     if(data){
-      console.log("Updated");
+      console.log("Updated likes");
+    }
+  });
+
+});
+
+app.post('/dislikes',function (req,res) {
+  const idd = req.body.id;
+  Comment.findByIdAndUpdate(idd, {$inc: {dislikes:1}}, function (err, data) {
+    if(data){
+      console.log("Updated dis");
     }
   });
 

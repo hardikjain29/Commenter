@@ -13,6 +13,15 @@ function comments(state = [], action) {
           return u
       });
       return Object.assign({}, state, {comments:{comments:newState}} );
+    case 'DECREMENT_LIKES':
+      var newState = state.comments.comments.map(u => {
+        if(action.id === u._id){
+          return Object.assign({}, u, { dislikes: u.dislikes + 1} )
+        }
+        else
+          return u
+      });
+      return Object.assign({}, state, {comments:{comments:newState}} );
     default:
       return state;
   }
