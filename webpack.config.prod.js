@@ -2,9 +2,6 @@ var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var ManifestPlugin = require('webpack-manifest-plugin');
 var ChunkManifestPlugin = require('chunk-manifest-webpack-plugin');
-var cssnext = require('postcss-cssnext');
-var postcssFocus = require('postcss-focus');
-var postcssReporter = require('postcss-reporter');
 var cssnano = require('cssnano');
 
 module.exports = {
@@ -37,14 +34,6 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.css$/,
-        exclude: /node_modules/,
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader?localIdentName=[hash:base64]&modules&importLoaders=1!postcss-loader'),
-      }, {
-        test: /\.css$/,
-        include: /node_modules/,
-        loaders: ['style-loader', 'css-loader'],
-      }, {
         test: /\.jsx*$/,
         exclude: /node_modules/,
         loader: 'babel',
@@ -82,18 +71,5 @@ module.exports = {
         warnings: false,
       }
     }),
-  ],
-
-  postcss: () => [
-    postcssFocus(),
-    cssnext({
-      browsers: ['last 2 versions', 'IE > 10'],
-    }),
-    cssnano({
-      autoprefixer: false
-    }),
-    postcssReporter({
-      clearMessages: true,
-    }),
-  ],
+  ]
 };
